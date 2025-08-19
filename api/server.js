@@ -1,12 +1,17 @@
 const express = require("express");
 const sqlite3 = require("sqlite3").verbose();
-const bodyParser = require("body-parser");
+const path = require("path");
 
 const app = express();
-app.use(bodyParser.json());
+const PORT = process.env.PORT || 3000;
 
-// Connect SQLite DB (file stored in project)
-const db = new sqlite3.Database("./database.sqlite");
+app.use(express.json());
+
+// Create SQLite database (in memory for Vercel, persistent locally)
+const db = new sqlite3.Database(path.join(__dirname, "database.db"), (err) => {
+  if (err) console.error("DB error:", err.message);
+  else console.log("Connected to SQLite database.");
+});
 
 // Create table if not exists
 db.run("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, name TEXT, email TEXT)");
@@ -28,5 +33,9 @@ app.get("/api/users", (req, res) => {
   });
 });
 
-// ✅ Export for Vercel
+// Start server (only for local dev)
+if (require.main === module) {
+  app.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`));
+}
+
 module.exports = app;
