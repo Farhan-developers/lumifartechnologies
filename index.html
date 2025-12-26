@@ -222,22 +222,30 @@
       <p class="section-sub">Share a few details — I’ll reply with a plan and quote.</p>
 
       <form class="contact-form" id="contactForm">
-        <div class="form-row">
-          <label for="name">Name</label>
-          <input id="name" name="name" type="text" placeholder="Your name" required />
-        </div>
-        <div class="form-row">
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" placeholder="you@example.com" required />
-        </div>
-        <div class="form-row">
-          <label for="message">Project details</label>
-          <textarea id="message" name="message" rows="5" placeholder="Tell me about your project…" required></textarea>
-        </div>
-        <button class="btn" type="submit">Send</button>
-        <p class="form-note">This uses a <code>mailto:</code> link (no backend). You can plug in Formspree or EmailJS later.</p>
-        <p class="form-note">Note : Please Use The Email Option Or WhatsApp Option</p>
-      </form>
+  <div class="form-row">
+    <label for="name">Name</label>
+    <input id="name" name="name" type="text" placeholder="Your name" required />
+  </div>
+
+  <div class="form-row">
+    <label for="email">Email</label>
+    <input id="email" name="email" type="email" placeholder="you@example.com" required />
+  </div>
+
+  <div class="form-row">
+    <label for="message">Project details</label>
+    <textarea id="message" name="message" rows="5"
+      placeholder="Tell me about your project…" required></textarea>
+  </div>
+
+  <!-- WhatsApp Direct Button -->
+  <a class="btn whatsapp-btn"
+     href="https://wa.me/919481417739"
+     target="_blank"
+     rel="noopener">
+    <i class="fa-brands fa-whatsapp"></i> Send</a>
+</form>
+
 
       <div class="contact-cards">
         <!-- Fixed Email Link -->
